@@ -16,8 +16,6 @@ Make sure that you have setup the environment properly. You will need minimum PH
 4. Run `composer install`
 5. Set the application key by running `php artisan key:generate --ansi`
 6. Run migrations `php artisan migrate:fresh --seed`
-7. Create bootstrap auth scaffolding  `php artisan ui bootstrap --auth`
-8. Run `composer require laravel/ui`
-9. Run `npm install`
-9. Run `npm run build` to build assets
-10. Start local server by executing `php artisan serve`
+7. Run `npm install`
+8. Run `npm run build` to build assets
+9. Start local server by executing `php artisan serve`
