@@ -46,7 +46,10 @@ class RoleController extends Controller
     public function store(StoreRoleRequest $request): RedirectResponse
     {
         $role = Role::create(['name' => $request->name]);
-        $role->syncPermissions($request->permissions);
+
+        $permissions = Permission::whereIn('id', $request->permissions)->get(['name'])->toArray();
+        
+        $role->syncPermissions($permissions);
 
         return redirect()->route('roles.index')
                 ->withSuccess('New role is added successfully.');
@@ -96,7 +99,9 @@ class RoleController extends Controller
 
         $role->update($input);
 
-        $role->syncPermissions($request->permissions);    
+        $permissions = Permission::whereIn('id', $request->permissions)->get(['name'])->toArray();
+
+        $role->syncPermissions($permissions);    
         
         return redirect()->back()
                 ->withSuccess('Role is updated successfully.');
